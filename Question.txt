@@ -1,0 +1,17 @@
+Create a small application that is able to remove the sky from the videos. Essentially this 
+means removing clouds and anything above the horizon which is not in the foreground.
+
+Necessary:
+ - use C++
+ - use openCV
+ - output should be a video stream that can be played back with black or white where the 
+sky/clouds used to be
+ - the same solution should work on both videos (you can convert to black and white if you 
+want though)
+
+Tips/Bonus:
+ - finding a line that intersects with the horizon can be useful
+ - building the algorithm initially on one frame rather than the entire video is easier
+ - bonus points for tracking and filtering across frames
+ - feel free to use existing open source algorithms in an attempt to accomplish this but
+you have to include links and references to those sources when you present the answer
