@@ -4,8 +4,8 @@ Create a small application that is able to remove the sky from the videos. Essen
 ####  Necessary:
 1. Use C++ 
     * Status: Done
- 2. Use openCV 
-* Status: Done
+2. Use openCV 
+   * Status: Done
 3. Output should be a video stream that can be played back with black or white where the sky/clouds used to be
     * Status: Done
     * Implemented with a trackbar that user can toggle
