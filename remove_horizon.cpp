@@ -10,10 +10,8 @@
 using namespace cv;
 using namespace std;
 
-Mat equalizeIntensity(const Mat& inputImage)
-{
-    if(inputImage.channels() >= 3)
-    {
+Mat equalizeIntensity(const Mat& inputImage){
+    if(inputImage.channels() >= 3){
         Mat ycrcb;
         cvtColor(inputImage,ycrcb,CV_BGR2YCrCb);
 
@@ -28,8 +26,8 @@ Mat equalizeIntensity(const Mat& inputImage)
 
         return result;
     }
-    else
-    {   Mat equalize;
+    else{   
+        Mat equalize;
         equalizeHist(inputImage, equalize); //equalize the histogram
         return equalize;
     }
@@ -37,8 +35,7 @@ Mat equalizeIntensity(const Mat& inputImage)
 
 Mat gaussian_blur(const Mat& inputImage){
     Mat blurred;
-        for (int i=1; i<31; i=i+2)
-       {
+        for (int i=1; i<31; i=i+2){
           // Gaussian smoothing
           GaussianBlur( inputImage, blurred, Size( i, i ), 0, 0 );
         }
@@ -46,22 +43,15 @@ Mat gaussian_blur(const Mat& inputImage){
 }
 
 
-
-int main(int argc, char** argv )
-    {
-    // VideoCapture cap("field_trees.mp4"); // open the video file for reading
-    // VideoCapture cap("dynamic_test.mp4"); // open the video file for reading
-    // VideoCapture cap("falcon_landing.mp4"); // open the video file for reading
-        VideoCapture cap(argv[1]);
-    if ( !cap.isOpened() )  // if not success, exit program
-    {
+int main(int argc, char** argv ){
+    VideoCapture cap(argv[1]);
+    if (!cap.isOpened()) { // if not success, exit program
          cout << "Cannot open the video file" << endl;
          return -1;
     }
-
     //create window
     namedWindow("Output",CV_WINDOW_AUTOSIZE);
-
+    
     //Create trackbar to change threshold value
     int thresh_value = 150;
     createTrackbar("Threshold Value", "Output", &thresh_value, 255);
@@ -81,11 +71,8 @@ int main(int argc, char** argv )
     while (1)
     {
         Mat frame;
-
         bool bSuccess = cap.read(frame); // read a new frame from video
-
-         if (!bSuccess) //if not success, break loop
-        {
+         if (!bSuccess) {
                  cout << "Cannot read the frame from video file" << endl;
                  break;
         }
@@ -134,13 +121,11 @@ int main(int argc, char** argv )
         }
 
         imshow("Output", frame);
-
-       if (waitKey(30) == 27) //wait for 'esc' key press for 30 ms. If 'esc' key is pressed, break loop
-        {
+        //wait for 'esc' key press for 30 ms. If 'esc' key is pressed, break loop
+       if (waitKey(30) == 27){
                 cout << "esc key is pressed by user" << endl;
                 break;
         }
     }
     return 0;
 }
-
